@@ -1,0 +1,21 @@
+﻿@model WebHabr.Models.Article
+
+@{
+    ViewData["Title"] = "Создать статью";
+}
+
+<h2>Создать статью</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Title">Заголовок</label>
+        <input type="text" class="form-control" id="Title" name="Title" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Content">Содержание</label>
+        <textarea class="form-control" id="Content" name="Content" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Создать</button>
+</form>
