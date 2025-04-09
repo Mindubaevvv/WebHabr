@@ -2,19 +2,18 @@
 
 namespace WebHabr.Models
 {
-    public class Article
+    public class Comment
     {
         public int Id { get; set; }
 
         [Required]
-        public string Title { get; set; } = string.Empty;
-
-        [Required]
-        public string Content { get; set; } = string.Empty;
+        public string Content { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public string AuthorId { get; set; }
+        public string UserId { get; set; }
 
+        public int ArticleId { get; set; }
+        public Article Article { get; set; }
     }
 }
