@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebHabr.Data;
@@ -6,6 +7,7 @@ using WebHabr.Models;
 
 namespace WebHabr.Controllers
 {
+    //[Authorize(Roles = "User")]
     public class ArticleController : Controller
     {
         private readonly ApplicationDbContext _context;

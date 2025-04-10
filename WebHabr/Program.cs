@@ -6,7 +6,7 @@ namespace WebHabr
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +17,7 @@ namespace WebHabr
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>() // ќЅя«ј“≈Ћ№Ќќ дл€ работы с рол€ми!
                 .AddEntityFrameworkStores<IdentityContext>();
             builder.Services.AddControllersWithViews();
 
@@ -49,6 +50,26 @@ namespace WebHabr
                 .WithStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                await SeedRolesAsync(roleManager);
+            }
+
+            async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+            {
+                string[] roles = { "Admin", "Author", "User" };
+
+                foreach (var role in roles)
+                {
+                    if (!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role));
+                    }
+                }
+            }
+
 
             app.Run();
         }
