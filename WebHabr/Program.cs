@@ -16,13 +16,22 @@ namespace WebHabr
                 options.UseNpgsql(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>() // ќЅя«ј“≈Ћ№Ќќ дл€ работы с рол€ми!
-                .AddEntityFrameworkStores<IdentityContext>();
-            builder.Services.AddControllersWithViews();
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddRoles<IdentityRole>() // ќЅя«ј“≈Ћ№Ќќ дл€ работы с рол€ми!
+            //    .AddEntityFrameworkStores<IdentityContext>();
+            //builder.Services.AddControllersWithViews();
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false; // если не хочешь подтверждение e-mail
+            })
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
@@ -48,8 +57,8 @@ namespace WebHabr
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
-            app.MapRazorPages()
-               .WithStaticAssets();
+            //app.MapRazorPages()
+            //   .WithStaticAssets();
 
             using (var scope = app.Services.CreateScope())
             {

@@ -34,11 +34,9 @@ img {
     width: 120px;
     height: 100px;
     position: relative;
-    left: 35px;
+    right: 410px;
     top: 40px;
-    /* object-fit: contain;*/
     border-radius: 12px;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);*/
     transition: transform 0.3s ease;
 }
 

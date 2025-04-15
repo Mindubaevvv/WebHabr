@@ -7,7 +7,7 @@ using WebHabr.Models;
 
 namespace WebHabr.Controllers
 {
-    //[Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Author, Admin")]
     public class ArticleController : Controller
     {
         private readonly ApplicationDbContext _context;
