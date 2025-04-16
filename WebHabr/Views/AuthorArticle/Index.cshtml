@@ -1,34 +1,44 @@
 ﻿@model IEnumerable<WebHabr.Models.Article>
 
 @{
-    ViewData["Title"] = "Мои статьи";
+    ViewData["Title"] = "My articles";
 }
 
-<h2>Мои статьи</h2>
+<h2 class="mb-4 text-center">My articles</h2>
 
 <p>
-    <a class="btn btn-primary" asp-controller="AuthorArticle" asp-action="Create">Создать новую статью</a>
+    <a class="btn btn-primary" asp-controller="AuthorArticle" asp-action="Create">Create a new article</a>
 </p>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Заголовок</th>
-            <th>Дата создания</th>
-            <th>Действия</th>
+            <th>Title</th>
+            <th>Date created</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var article in Model)
         {
-            <tr>
+            <tr class="article-row">
                 <td>@article.Title</td>
                 <td>@article.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>
-                    <a class="btn btn-info" asp-controller="AuthorArticle" asp-action="Edit" asp-route-id="@article.Id">Редактировать</a>
-                    <a class="btn btn-danger" asp-controller="AuthorArticle" asp-action="Delete" asp-route-id="@article.Id">Удалить</a>
+                    <a class="btn btn-info" asp-controller="AuthorArticle" asp-action="Edit" asp-route-id="@article.Id">Edit</a>
+                    <a class="btn btn-danger" asp-controller="AuthorArticle" asp-action="Delete" asp-route-id="@article.Id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<style>
+    .article-row {
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .article-row:hover {
+            transform: scale(1.05);
+        }
+</style>

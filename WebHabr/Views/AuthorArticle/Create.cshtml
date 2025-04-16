@@ -1,21 +1,61 @@
 ﻿@model WebHabr.Models.Article
 
 @{
-    ViewData["Title"] = "Создать статью";
+    ViewData["Title"] = "Create article";
 }
 
-<h2>Создать статью</h2>
+<h2 class="section-title text-center">Create article</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label for="Title">Заголовок</label>
-        <input type="text" class="form-control" id="Title" name="Title" required />
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form asp-action="Create" method="post" class="p-4 border rounded shadow-sm bg-white">
+                <div class="form-group mb-3">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="Title" name="Title" required />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="Content" class="form-label">
+                        Content
+                    </label>
+                    <textarea class="form-control" id="Content" name="Content" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Create</button>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-        <label for="Content">Содержание</label>
-        <textarea class="form-control" id="Content" name="Content" rows="5" required></textarea>
-    </div>
+<style>
+    .section-title {
+        color: #004080; 
+        font-weight: 600;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #004080;
+        padding-bottom: 10px;
+        display: inline-block;
+        position: relative;
+        left: 550px;
+    }
 
-    <button type="submit" class="btn btn-primary mt-3">Создать</button>
-</form>
+    .form-control:focus {
+        border-color: #004080;
+        box-shadow: 0 0 0 0.2rem rgba(0, 64, 128, 0.25);
+    }
+
+    .btn-primary {
+        background-color: #004080;
+        border-color: #004080;
+    }
+
+        .btn-primary:hover {
+            background-color: #002f5e;
+            border-color: #002f5e;
+        }
+
+    body {
+        background-color: #f5f7fa;
+    }
+</style>

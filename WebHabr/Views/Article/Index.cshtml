@@ -1,18 +1,28 @@
 ﻿@model IEnumerable<WebHabr.Models.Article>
 
 @{
-    ViewData["Title"] = "Все статьи";
+    ViewData["Title"] = "All articles";
 }
 
-<h2>Все статьи</h2>
+<h2 class="mb-4 text-center">All articles</h2>
 
 @foreach (var article in Model)
 {
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">@article.Title</h5>
-                <p class="card-text">@article.Content.Substring(0, 150) + "..."</p>
-                <a class="btn btn-primary" asp-controller="Article" asp-action="Details" asp-route-id="@article.Id">Читать далее</a>
-            </div>
+    <div class="card mt-4 article-card">
+        <div class="card-body">
+            <h5 class="card-title">@article.Title</h5>
+            <p class="card-text">@article.Content.Substring(0, 150) + "..."</p>
+            <a class="btn btn-outline-primary" asp-controller="Article" asp-action="Details" asp-route-id="@article.Id">Читать далее</a>
         </div>
+    </div>
 }
+
+<style>
+    .article-card {
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .article-card:hover {
+            transform: scale(1.05);
+        }
+</style>
