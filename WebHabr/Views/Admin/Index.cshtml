@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UserWithRoleViewModel>
+
+<h2>Users</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var user in Model)
+{
+    <tr>
+        <td>@user.Email</td>
+        <td>@user.Role</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@user.UserID" class="btn btn-sm btn-primary">Edit</a>
+            <a asp-action="Delete" asp-route-id="@user.UserID" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

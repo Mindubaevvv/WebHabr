@@ -1,0 +1,23 @@
+﻿@model WebHabr.Models.UserWithRoleViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>Edit User</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="UserID" />
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Role"></label>
+        <select asp-for="Role" class="form-control" asp-items="@(new SelectList(ViewBag.Roles, "Name", "Name", Model.Role))"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
