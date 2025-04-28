@@ -1,7 +1,7 @@
 ﻿@model WebHabr.Models.LoginViewModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Вход";
 }
 
 <style>
@@ -85,23 +85,23 @@
 
 <div class="form-wrapper">
     <div class="form-container">
-        <h2>Login</h2>
+        <h2>Вход</h2>
 
         <form asp-action="Login" asp-controller="Account" method="post">
             <label asp-for="Email" class="form-label"></label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
 
-            <label asp-for="Password" class="form-label"></label>
+            <label asp-for="Password" class="form-label">Пароль</label>
             <input asp-for="Password" type="password" class="form-control" />
             <span asp-validation-for="Password" class="text-danger"></span>
 
             <div class="form-check">
                 <input asp-for="RememberMe" class="form-check-input" />
-                <label asp-for="RememberMe" class="form-label">Remember me</label>
+                <label asp-for="RememberMe" class="form-label">Запомнить меня</label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Войти</button>
         </form>
     </div>
 </div>

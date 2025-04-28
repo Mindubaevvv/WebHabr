@@ -1,21 +1,21 @@
 ﻿@model IEnumerable<WebHabr.Models.Article>
 
 @{
-    ViewData["Title"] = "My articles";
+    ViewData["Title"] = "Мои статьи";
 }
 
-<h2 class="mb-4 text-center">My articles</h2>
+<h2 class="mb-4 text-center">Мои статьи</h2>
 
 <p>
-    <a class="btn btn-primary" asp-controller="AuthorArticle" asp-action="Create">Create a new article</a>
+    <a class="btn btn-primary" asp-controller="AuthorArticle" asp-action="Create">Создать статью</a>
 </p>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Date created</th>
-            <th>Action</th>
+            <th>Заголовок</th>
+            <th>Дата создания</th>
+            <th>Действие</th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +25,8 @@
                 <td>@article.Title</td>
                 <td>@article.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>
-                    <a class="btn btn-info" asp-controller="AuthorArticle" asp-action="Edit" asp-route-id="@article.Id">Edit</a>
-                    <a class="btn btn-danger" asp-controller="AuthorArticle" asp-action="Delete" asp-route-id="@article.Id">Delete</a>
+                    <a class="btn btn-info" asp-controller="AuthorArticle" asp-action="Edit" asp-route-id="@article.Id">Редактировать</a>
+                    <a class="btn btn-danger" asp-controller="AuthorArticle" asp-action="Delete" asp-route-id="@article.Id">Удалить</a>
                 </td>
             </tr>
         }

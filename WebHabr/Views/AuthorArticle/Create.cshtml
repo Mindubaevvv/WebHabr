@@ -1,28 +1,28 @@
 ﻿@model WebHabr.Models.Article
 
 @{
-    ViewData["Title"] = "Create article";
+    ViewData["Title"] = "Создать статью";
 }
 
-<h2 class="section-title text-center">Create article</h2>
+<h2 class="section-title text-center">Создать статью</h2>
 
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form asp-action="Create" method="post" class="p-4 border rounded shadow-sm bg-white">
                 <div class="form-group mb-3">
-                    <label for="Title" class="form-label">Title</label>
+                    <label for="Title" class="form-label">Заголовок</label>
                     <input type="text" class="form-control" id="Title" name="Title" required />
                 </div>
 
                 <div class="form-group mb-4">
                     <label for="Content" class="form-label">
-                        Content
+                        Содержание
                     </label>
                     <textarea class="form-control" id="Content" name="Content" rows="6" required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Create</button>
+                <button type="submit" class="btn btn-primary w-100">Создать</button>
             </form>
         </div>
     </div>
